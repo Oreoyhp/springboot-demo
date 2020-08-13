@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crsc.mapper.YyRenshiYdMapper">
+  <resultMap id="BaseResultMap" type="com.crsc.domain.YyRenshiYd">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="VERSON" jdbcType="INTEGER" property="verson" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="macid" jdbcType="INTEGER" property="macid" />
+    <result column="xj" jdbcType="VARCHAR" property="xj" />
+    <result column="groupname" jdbcType="VARCHAR" property="groupname" />
+    <result column="xzlb" jdbcType="INTEGER" property="xzlb" />
+    <result column="teamischeck" jdbcType="INTEGER" property="teamischeck" />
+    <result column="isadmin" jdbcType="INTEGER" property="isadmin" />
+    <result column="iscjq" jdbcType="INTEGER" property="iscjq" />
+    <result column="syqjbgz" jdbcType="VARCHAR" property="syqjbgz" />
+    <result column="sygwgz" jdbcType="VARCHAR" property="sygwgz" />
+    <result column="syjxgz" jdbcType="VARCHAR" property="syjxgz" />
+    <result column="syyjjt" jdbcType="VARCHAR" property="syyjjt" />
+    <result column="sytotal" jdbcType="VARCHAR" property="sytotal" />
+    <result column="zzjbgz" jdbcType="VARCHAR" property="zzjbgz" />
+    <result column="zzgwgz" jdbcType="VARCHAR" property="zzgwgz" />
+    <result column="zzjxgz" jdbcType="VARCHAR" property="zzjxgz" />
+    <result column="zzyjjt" jdbcType="VARCHAR" property="zzyjjt" />
+    <result column="zztotal" jdbcType="VARCHAR" property="zztotal" />
+    <result column="valid" jdbcType="INTEGER" property="valid" />
+    <result column="operatorid" jdbcType="INTEGER" property="operatorid" />
+    <result column="cdate" jdbcType="TIMESTAMP" property="cdate" />
+    <result column="udate" jdbcType="TIMESTAMP" property="udate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, VERSON, username, usercode, macid, xj, groupname, xzlb, teamischeck, isadmin, 
+    iscjq, syqjbgz, sygwgz, syjxgz, syyjjt, sytotal, zzjbgz, zzgwgz, zzjxgz, zzyjjt, 
+    zztotal, `valid`, operatorid, cdate, udate
+  </sql>
+  <select id="selectByExample" parameterType="com.crsc.domain.YyRenshiYdExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_yy_renshi_yd
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_yy_renshi_yd
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_yy_renshi_yd
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.crsc.domain.YyRenshiYdExample">
+    delete from t_yy_renshi_yd
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.crsc.domain.YyRenshiYd">
+    insert into t_yy_renshi_yd (id, VERSON, username, 
+      usercode, macid, xj, 
+      groupname, xzlb, teamischeck, 
+      isadmin, iscjq, syqjbgz, 
+      sygwgz, syjxgz, syyjjt, 
+      sytotal, zzjbgz, zzgwgz, 
+      zzjxgz, zzyjjt, zztotal, 
+      `valid`, operatorid, cdate, 
+      udate)
+    values (#{id,jdbcType=INTEGER}, #{verson,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{usercode,jdbcType=VARCHAR}, #{macid,jdbcType=INTEGER}, #{xj,jdbcType=VARCHAR}, 
+      #{groupname,jdbcType=VARCHAR}, #{xzlb,jdbcType=INTEGER}, #{teamischeck,jdbcType=INTEGER}, 
+      #{isadmin,jdbcType=INTEGER}, #{iscjq,jdbcType=INTEGER}, #{syqjbgz,jdbcType=VARCHAR}, 
+      #{sygwgz,jdbcType=VARCHAR}, #{syjxgz,jdbcType=VARCHAR}, #{syyjjt,jdbcType=VARCHAR}, 
+      #{sytotal,jdbcType=VARCHAR}, #{zzjbgz,jdbcType=VARCHAR}, #{zzgwgz,jdbcType=VARCHAR}, 
+      #{zzjxgz,jdbcType=VARCHAR}, #{zzyjjt,jdbcType=VARCHAR}, #{zztotal,jdbcType=VARCHAR}, 
+      #{valid,jdbcType=INTEGER}, #{operatorid,jdbcType=INTEGER}, #{cdate,jdbcType=TIMESTAMP}, 
+      #{udate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crsc.domain.YyRenshiYd">
+    insert into t_yy_renshi_yd
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="verson != null">
+        VERSON,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="macid != null">
+        macid,
+      </if>
+      <if test="xj != null">
+        xj,
+      </if>
+      <if test="groupname != null">
+        groupname,
+      </if>
+      <if test="xzlb != null">
+        xzlb,
+      </if>
+      <if test="teamischeck != null">
+        teamischeck,
+      </if>
+      <if test="isadmin != null">
+        isadmin,
+      </if>
+      <if test="iscjq != null">
+        iscjq,
+      </if>
+      <if test="syqjbgz != null">
+        syqjbgz,
+      </if>
+      <if test="sygwgz != null">
+        sygwgz,
+      </if>
+      <if test="syjxgz != null">
+        syjxgz,
+      </if>
+      <if test="syyjjt != null">
+        syyjjt,
+      </if>
+      <if test="sytotal != null">
+        sytotal,
+      </if>
+      <if test="zzjbgz != null">
+        zzjbgz,
+      </if>
+      <if test="zzgwgz != null">
+        zzgwgz,
+      </if>
+      <if test="zzjxgz != null">
+        zzjxgz,
+      </if>
+      <if test="zzyjjt != null">
+        zzyjjt,
+      </if>
+      <if test="zztotal != null">
+        zztotal,
+      </if>
+      <if test="valid != null">
+        `valid`,
+      </if>
+      <if test="operatorid != null">
+        operatorid,
+      </if>
+      <if test="cdate != null">
+        cdate,
+      </if>
+      <if test="udate != null">
+        udate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="verson != null">
+        #{verson,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="macid != null">
+        #{macid,jdbcType=INTEGER},
+      </if>
+      <if test="xj != null">
+        #{xj,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null">
+        #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="xzlb != null">
+        #{xzlb,jdbcType=INTEGER},
+      </if>
+      <if test="teamischeck != null">
+        #{teamischeck,jdbcType=INTEGER},
+      </if>
+      <if test="isadmin != null">
+        #{isadmin,jdbcType=INTEGER},
+      </if>
+      <if test="iscjq != null">
+        #{iscjq,jdbcType=INTEGER},
+      </if>
+      <if test="syqjbgz != null">
+        #{syqjbgz,jdbcType=VARCHAR},
+      </if>
+      <if test="sygwgz != null">
+        #{sygwgz,jdbcType=VARCHAR},
+      </if>
+      <if test="syjxgz != null">
+        #{syjxgz,jdbcType=VARCHAR},
+      </if>
+      <if test="syyjjt != null">
+        #{syyjjt,jdbcType=VARCHAR},
+      </if>
+      <if test="sytotal != null">
+        #{sytotal,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjbgz != null">
+        #{zzjbgz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzgwgz != null">
+        #{zzgwgz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjxgz != null">
+        #{zzjxgz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzyjjt != null">
+        #{zzyjjt,jdbcType=VARCHAR},
+      </if>
+      <if test="zztotal != null">
+        #{zztotal,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null">
+        #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="cdate != null">
+        #{cdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udate != null">
+        #{udate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.crsc.domain.YyRenshiYdExample" resultType="java.lang.Long">
+    select count(*) from t_yy_renshi_yd
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_yy_renshi_yd
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.verson != null">
+        VERSON = #{record.verson,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usercode != null">
+        usercode = #{record.usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.macid != null">
+        macid = #{record.macid,jdbcType=INTEGER},
+      </if>
+      <if test="record.xj != null">
+        xj = #{record.xj,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupname != null">
+        groupname = #{record.groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xzlb != null">
+        xzlb = #{record.xzlb,jdbcType=INTEGER},
+      </if>
+      <if test="record.teamischeck != null">
+        teamischeck = #{record.teamischeck,jdbcType=INTEGER},
+      </if>
+      <if test="record.isadmin != null">
+        isadmin = #{record.isadmin,jdbcType=INTEGER},
+      </if>
+      <if test="record.iscjq != null">
+        iscjq = #{record.iscjq,jdbcType=INTEGER},
+      </if>
+      <if test="record.syqjbgz != null">
+        syqjbgz = #{record.syqjbgz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sygwgz != null">
+        sygwgz = #{record.sygwgz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.syjxgz != null">
+        syjxgz = #{record.syjxgz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.syyjjt != null">
+        syyjjt = #{record.syyjjt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sytotal != null">
+        sytotal = #{record.sytotal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zzjbgz != null">
+        zzjbgz = #{record.zzjbgz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zzgwgz != null">
+        zzgwgz = #{record.zzgwgz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zzjxgz != null">
+        zzjxgz = #{record.zzjxgz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zzyjjt != null">
+        zzyjjt = #{record.zzyjjt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zztotal != null">
+        zztotal = #{record.zztotal,jdbcType=VARCHAR},
+      </if>
+      <if test="record.valid != null">
+        `valid` = #{record.valid,jdbcType=INTEGER},
+      </if>
+      <if test="record.operatorid != null">
+        operatorid = #{record.operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.cdate != null">
+        cdate = #{record.cdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.udate != null">
+        udate = #{record.udate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_yy_renshi_yd
+    set id = #{record.id,jdbcType=INTEGER},
+      VERSON = #{record.verson,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR},
+      usercode = #{record.usercode,jdbcType=VARCHAR},
+      macid = #{record.macid,jdbcType=INTEGER},
+      xj = #{record.xj,jdbcType=VARCHAR},
+      groupname = #{record.groupname,jdbcType=VARCHAR},
+      xzlb = #{record.xzlb,jdbcType=INTEGER},
+      teamischeck = #{record.teamischeck,jdbcType=INTEGER},
+      isadmin = #{record.isadmin,jdbcType=INTEGER},
+      iscjq = #{record.iscjq,jdbcType=INTEGER},
+      syqjbgz = #{record.syqjbgz,jdbcType=VARCHAR},
+      sygwgz = #{record.sygwgz,jdbcType=VARCHAR},
+      syjxgz = #{record.syjxgz,jdbcType=VARCHAR},
+      syyjjt = #{record.syyjjt,jdbcType=VARCHAR},
+      sytotal = #{record.sytotal,jdbcType=VARCHAR},
+      zzjbgz = #{record.zzjbgz,jdbcType=VARCHAR},
+      zzgwgz = #{record.zzgwgz,jdbcType=VARCHAR},
+      zzjxgz = #{record.zzjxgz,jdbcType=VARCHAR},
+      zzyjjt = #{record.zzyjjt,jdbcType=VARCHAR},
+      zztotal = #{record.zztotal,jdbcType=VARCHAR},
+      `valid` = #{record.valid,jdbcType=INTEGER},
+      operatorid = #{record.operatorid,jdbcType=INTEGER},
+      cdate = #{record.cdate,jdbcType=TIMESTAMP},
+      udate = #{record.udate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crsc.domain.YyRenshiYd">
+    update t_yy_renshi_yd
+    <set>
+      <if test="verson != null">
+        VERSON = #{verson,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="macid != null">
+        macid = #{macid,jdbcType=INTEGER},
+      </if>
+      <if test="xj != null">
+        xj = #{xj,jdbcType=VARCHAR},
+      </if>
+      <if test="groupname != null">
+        groupname = #{groupname,jdbcType=VARCHAR},
+      </if>
+      <if test="xzlb != null">
+        xzlb = #{xzlb,jdbcType=INTEGER},
+      </if>
+      <if test="teamischeck != null">
+        teamischeck = #{teamischeck,jdbcType=INTEGER},
+      </if>
+      <if test="isadmin != null">
+        isadmin = #{isadmin,jdbcType=INTEGER},
+      </if>
+      <if test="iscjq != null">
+        iscjq = #{iscjq,jdbcType=INTEGER},
+      </if>
+      <if test="syqjbgz != null">
+        syqjbgz = #{syqjbgz,jdbcType=VARCHAR},
+      </if>
+      <if test="sygwgz != null">
+        sygwgz = #{sygwgz,jdbcType=VARCHAR},
+      </if>
+      <if test="syjxgz != null">
+        syjxgz = #{syjxgz,jdbcType=VARCHAR},
+      </if>
+      <if test="syyjjt != null">
+        syyjjt = #{syyjjt,jdbcType=VARCHAR},
+      </if>
+      <if test="sytotal != null">
+        sytotal = #{sytotal,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjbgz != null">
+        zzjbgz = #{zzjbgz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzgwgz != null">
+        zzgwgz = #{zzgwgz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjxgz != null">
+        zzjxgz = #{zzjxgz,jdbcType=VARCHAR},
+      </if>
+      <if test="zzyjjt != null">
+        zzyjjt = #{zzyjjt,jdbcType=VARCHAR},
+      </if>
+      <if test="zztotal != null">
+        zztotal = #{zztotal,jdbcType=VARCHAR},
+      </if>
+      <if test="valid != null">
+        `valid` = #{valid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null">
+        operatorid = #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="cdate != null">
+        cdate = #{cdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="udate != null">
+        udate = #{udate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crsc.domain.YyRenshiYd">
+    update t_yy_renshi_yd
+    set VERSON = #{verson,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      usercode = #{usercode,jdbcType=VARCHAR},
+      macid = #{macid,jdbcType=INTEGER},
+      xj = #{xj,jdbcType=VARCHAR},
+      groupname = #{groupname,jdbcType=VARCHAR},
+      xzlb = #{xzlb,jdbcType=INTEGER},
+      teamischeck = #{teamischeck,jdbcType=INTEGER},
+      isadmin = #{isadmin,jdbcType=INTEGER},
+      iscjq = #{iscjq,jdbcType=INTEGER},
+      syqjbgz = #{syqjbgz,jdbcType=VARCHAR},
+      sygwgz = #{sygwgz,jdbcType=VARCHAR},
+      syjxgz = #{syjxgz,jdbcType=VARCHAR},
+      syyjjt = #{syyjjt,jdbcType=VARCHAR},
+      sytotal = #{sytotal,jdbcType=VARCHAR},
+      zzjbgz = #{zzjbgz,jdbcType=VARCHAR},
+      zzgwgz = #{zzgwgz,jdbcType=VARCHAR},
+      zzjxgz = #{zzjxgz,jdbcType=VARCHAR},
+      zzyjjt = #{zzyjjt,jdbcType=VARCHAR},
+      zztotal = #{zztotal,jdbcType=VARCHAR},
+      `valid` = #{valid,jdbcType=INTEGER},
+      operatorid = #{operatorid,jdbcType=INTEGER},
+      cdate = #{cdate,jdbcType=TIMESTAMP},
+      udate = #{udate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

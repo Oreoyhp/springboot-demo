@@ -1,0 +1,1163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crsc.mapper.YyRenshiMapper">
+  <resultMap id="BaseResultMap" type="com.crsc.domain.YyRenshi">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="VERSON" jdbcType="INTEGER" property="verson" />
+    <result column="usercode" jdbcType="VARCHAR" property="usercode" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="macid" jdbcType="INTEGER" property="macid" />
+    <result column="daterzrq" jdbcType="DATE" property="daterzrq" />
+    <result column="iszz" jdbcType="INTEGER" property="iszz" />
+    <result column="employer" jdbcType="INTEGER" property="employer" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="addresswork" jdbcType="INTEGER" property="addresswork" />
+    <result column="parentcode" jdbcType="VARCHAR" property="parentcode" />
+    <result column="typery" jdbcType="INTEGER" property="typery" />
+    <result column="typepy" jdbcType="INTEGER" property="typepy" />
+    <result column="dategqht" jdbcType="DATE" property="dategqht" />
+    <result column="syhtr" jdbcType="INTEGER" property="syhtr" />
+    <result column="datezzrq" jdbcType="DATE" property="datezzrq" />
+    <result column="htqx" jdbcType="INTEGER" property="htqx" />
+    <result column="datecchtdqr" jdbcType="DATE" property="datecchtdqr" />
+    <result column="datehtzcdqr" jdbcType="DATE" property="datehtzcdqr" />
+    <result column="sl" jdbcType="INTEGER" property="sl" />
+    <result column="sfzhm" jdbcType="VARCHAR" property="sfzhm" />
+    <result column="mz" jdbcType="INTEGER" property="mz" />
+    <result column="csrq" jdbcType="DATE" property="csrq" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="hf" jdbcType="INTEGER" property="hf" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="csd" jdbcType="VARCHAR" property="csd" />
+    <result column="zzmm" jdbcType="INTEGER" property="zzmm" />
+    <result column="hkszd" jdbcType="VARCHAR" property="hkszd" />
+    <result column="hkxz" jdbcType="INTEGER" property="hkxz" />
+    <result column="byyx" jdbcType="VARCHAR" property="byyx" />
+    <result column="zy" jdbcType="VARCHAR" property="zy" />
+    <result column="xl" jdbcType="INTEGER" property="xl" />
+    <result column="cjgzsj" jdbcType="TIMESTAMP" property="cjgzsj" />
+    <result column="gl" jdbcType="VARCHAR" property="gl" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="jjuser" jdbcType="VARCHAR" property="jjuser" />
+    <result column="jjtel" jdbcType="VARCHAR" property="jjtel" />
+    <result column="yhlb" jdbcType="VARCHAR" property="yhlb" />
+    <result column="khzh" jdbcType="VARCHAR" property="khzh" />
+    <result column="khyhqc" jdbcType="VARCHAR" property="khyhqc" />
+    <result column="zhdz" jdbcType="VARCHAR" property="zhdz" />
+    <result column="sbjs" jdbcType="VARCHAR" property="sbjs" />
+    <result column="gjjjfjs" jdbcType="VARCHAR" property="gjjjfjs" />
+    <result column="wxyjd" jdbcType="VARCHAR" property="wxyjd" />
+    <result column="xzjzrq" jdbcType="DATE" property="xzjzrq" />
+    <result column="lzrq" jdbcType="DATE" property="lzrq" />
+    <result column="valid" jdbcType="INTEGER" property="valid" />
+    <result column="operatorid" jdbcType="INTEGER" property="operatorid" />
+    <result column="udate" jdbcType="TIMESTAMP" property="udate" />
+    <result column="cdate" jdbcType="TIMESTAMP" property="cdate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.crsc.domain.YyRenshi">
+    <result column="gzjl" jdbcType="LONGVARCHAR" property="gzjl" />
+    <result column="mqzz" jdbcType="LONGVARCHAR" property="mqzz" />
+    <result column="sbgjjjfqk" jdbcType="LONGVARCHAR" property="sbgjjjfqk" />
+    <result column="gsqk" jdbcType="LONGVARCHAR" property="gsqk" />
+    <result column="lzyy" jdbcType="LONGVARCHAR" property="lzyy" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, VERSON, usercode, username, macid, daterzrq, iszz, employer, address, addresswork, 
+    parentcode, typery, typepy, dategqht, syhtr, datezzrq, htqx, datecchtdqr, datehtzcdqr, 
+    sl, sfzhm, mz, csrq, age, hf, sex, csd, zzmm, hkszd, hkxz, byyx, zy, xl, cjgzsj, 
+    gl, tel, email, jjuser, jjtel, yhlb, khzh, khyhqc, zhdz, sbjs, gjjjfjs, wxyjd, xzjzrq, 
+    lzrq, `valid`, operatorid, udate, cdate
+  </sql>
+  <sql id="Blob_Column_List">
+    gzjl, mqzz, sbgjjjfqk, gsqk, lzyy
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.crsc.domain.YyRenshiExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_yy_renshi
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.crsc.domain.YyRenshiExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_yy_renshi
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_yy_renshi
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_yy_renshi
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.crsc.domain.YyRenshiExample">
+    delete from t_yy_renshi
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.crsc.domain.YyRenshi">
+    insert into t_yy_renshi (id, VERSON, usercode, 
+      username, macid, daterzrq, 
+      iszz, employer, address, 
+      addresswork, parentcode, typery, 
+      typepy, dategqht, syhtr, 
+      datezzrq, htqx, datecchtdqr, 
+      datehtzcdqr, sl, sfzhm, 
+      mz, csrq, age, hf, 
+      sex, csd, zzmm, hkszd, 
+      hkxz, byyx, zy, xl, 
+      cjgzsj, gl, tel, 
+      email, jjuser, jjtel, 
+      yhlb, khzh, khyhqc, 
+      zhdz, sbjs, gjjjfjs, 
+      wxyjd, xzjzrq, lzrq, `valid`, 
+      operatorid, udate, cdate, 
+      gzjl, mqzz, sbgjjjfqk, 
+      gsqk, lzyy)
+    values (#{id,jdbcType=INTEGER}, #{verson,jdbcType=INTEGER}, #{usercode,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{macid,jdbcType=INTEGER}, #{daterzrq,jdbcType=DATE}, 
+      #{iszz,jdbcType=INTEGER}, #{employer,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{addresswork,jdbcType=INTEGER}, #{parentcode,jdbcType=VARCHAR}, #{typery,jdbcType=INTEGER}, 
+      #{typepy,jdbcType=INTEGER}, #{dategqht,jdbcType=DATE}, #{syhtr,jdbcType=INTEGER}, 
+      #{datezzrq,jdbcType=DATE}, #{htqx,jdbcType=INTEGER}, #{datecchtdqr,jdbcType=DATE}, 
+      #{datehtzcdqr,jdbcType=DATE}, #{sl,jdbcType=INTEGER}, #{sfzhm,jdbcType=VARCHAR}, 
+      #{mz,jdbcType=INTEGER}, #{csrq,jdbcType=DATE}, #{age,jdbcType=INTEGER}, #{hf,jdbcType=INTEGER}, 
+      #{sex,jdbcType=INTEGER}, #{csd,jdbcType=VARCHAR}, #{zzmm,jdbcType=INTEGER}, #{hkszd,jdbcType=VARCHAR}, 
+      #{hkxz,jdbcType=INTEGER}, #{byyx,jdbcType=VARCHAR}, #{zy,jdbcType=VARCHAR}, #{xl,jdbcType=INTEGER}, 
+      #{cjgzsj,jdbcType=TIMESTAMP}, #{gl,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{jjuser,jdbcType=VARCHAR}, #{jjtel,jdbcType=VARCHAR}, 
+      #{yhlb,jdbcType=VARCHAR}, #{khzh,jdbcType=VARCHAR}, #{khyhqc,jdbcType=VARCHAR}, 
+      #{zhdz,jdbcType=VARCHAR}, #{sbjs,jdbcType=VARCHAR}, #{gjjjfjs,jdbcType=VARCHAR}, 
+      #{wxyjd,jdbcType=VARCHAR}, #{xzjzrq,jdbcType=DATE}, #{lzrq,jdbcType=DATE}, #{valid,jdbcType=INTEGER}, 
+      #{operatorid,jdbcType=INTEGER}, #{udate,jdbcType=TIMESTAMP}, #{cdate,jdbcType=TIMESTAMP}, 
+      #{gzjl,jdbcType=LONGVARCHAR}, #{mqzz,jdbcType=LONGVARCHAR}, #{sbgjjjfqk,jdbcType=LONGVARCHAR}, 
+      #{gsqk,jdbcType=LONGVARCHAR}, #{lzyy,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.crsc.domain.YyRenshi">
+    insert into t_yy_renshi
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="verson != null">
+        VERSON,
+      </if>
+      <if test="usercode != null">
+        usercode,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="macid != null">
+        macid,
+      </if>
+      <if test="daterzrq != null">
+        daterzrq,
+      </if>
+      <if test="iszz != null">
+        iszz,
+      </if>
+      <if test="employer != null">
+        employer,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="addresswork != null">
+        addresswork,
+      </if>
+      <if test="parentcode != null">
+        parentcode,
+      </if>
+      <if test="typery != null">
+        typery,
+      </if>
+      <if test="typepy != null">
+        typepy,
+      </if>
+      <if test="dategqht != null">
+        dategqht,
+      </if>
+      <if test="syhtr != null">
+        syhtr,
+      </if>
+      <if test="datezzrq != null">
+        datezzrq,
+      </if>
+      <if test="htqx != null">
+        htqx,
+      </if>
+      <if test="datecchtdqr != null">
+        datecchtdqr,
+      </if>
+      <if test="datehtzcdqr != null">
+        datehtzcdqr,
+      </if>
+      <if test="sl != null">
+        sl,
+      </if>
+      <if test="sfzhm != null">
+        sfzhm,
+      </if>
+      <if test="mz != null">
+        mz,
+      </if>
+      <if test="csrq != null">
+        csrq,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="hf != null">
+        hf,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="csd != null">
+        csd,
+      </if>
+      <if test="zzmm != null">
+        zzmm,
+      </if>
+      <if test="hkszd != null">
+        hkszd,
+      </if>
+      <if test="hkxz != null">
+        hkxz,
+      </if>
+      <if test="byyx != null">
+        byyx,
+      </if>
+      <if test="zy != null">
+        zy,
+      </if>
+      <if test="xl != null">
+        xl,
+      </if>
+      <if test="cjgzsj != null">
+        cjgzsj,
+      </if>
+      <if test="gl != null">
+        gl,
+      </if>
+      <if test="tel != null">
+        tel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="jjuser != null">
+        jjuser,
+      </if>
+      <if test="jjtel != null">
+        jjtel,
+      </if>
+      <if test="yhlb != null">
+        yhlb,
+      </if>
+      <if test="khzh != null">
+        khzh,
+      </if>
+      <if test="khyhqc != null">
+        khyhqc,
+      </if>
+      <if test="zhdz != null">
+        zhdz,
+      </if>
+      <if test="sbjs != null">
+        sbjs,
+      </if>
+      <if test="gjjjfjs != null">
+        gjjjfjs,
+      </if>
+      <if test="wxyjd != null">
+        wxyjd,
+      </if>
+      <if test="xzjzrq != null">
+        xzjzrq,
+      </if>
+      <if test="lzrq != null">
+        lzrq,
+      </if>
+      <if test="valid != null">
+        `valid`,
+      </if>
+      <if test="operatorid != null">
+        operatorid,
+      </if>
+      <if test="udate != null">
+        udate,
+      </if>
+      <if test="cdate != null">
+        cdate,
+      </if>
+      <if test="gzjl != null">
+        gzjl,
+      </if>
+      <if test="mqzz != null">
+        mqzz,
+      </if>
+      <if test="sbgjjjfqk != null">
+        sbgjjjfqk,
+      </if>
+      <if test="gsqk != null">
+        gsqk,
+      </if>
+      <if test="lzyy != null">
+        lzyy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="verson != null">
+        #{verson,jdbcType=INTEGER},
+      </if>
+      <if test="usercode != null">
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="macid != null">
+        #{macid,jdbcType=INTEGER},
+      </if>
+      <if test="daterzrq != null">
+        #{daterzrq,jdbcType=DATE},
+      </if>
+      <if test="iszz != null">
+        #{iszz,jdbcType=INTEGER},
+      </if>
+      <if test="employer != null">
+        #{employer,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addresswork != null">
+        #{addresswork,jdbcType=INTEGER},
+      </if>
+      <if test="parentcode != null">
+        #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="typery != null">
+        #{typery,jdbcType=INTEGER},
+      </if>
+      <if test="typepy != null">
+        #{typepy,jdbcType=INTEGER},
+      </if>
+      <if test="dategqht != null">
+        #{dategqht,jdbcType=DATE},
+      </if>
+      <if test="syhtr != null">
+        #{syhtr,jdbcType=INTEGER},
+      </if>
+      <if test="datezzrq != null">
+        #{datezzrq,jdbcType=DATE},
+      </if>
+      <if test="htqx != null">
+        #{htqx,jdbcType=INTEGER},
+      </if>
+      <if test="datecchtdqr != null">
+        #{datecchtdqr,jdbcType=DATE},
+      </if>
+      <if test="datehtzcdqr != null">
+        #{datehtzcdqr,jdbcType=DATE},
+      </if>
+      <if test="sl != null">
+        #{sl,jdbcType=INTEGER},
+      </if>
+      <if test="sfzhm != null">
+        #{sfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null">
+        #{mz,jdbcType=INTEGER},
+      </if>
+      <if test="csrq != null">
+        #{csrq,jdbcType=DATE},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="hf != null">
+        #{hf,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="csd != null">
+        #{csd,jdbcType=VARCHAR},
+      </if>
+      <if test="zzmm != null">
+        #{zzmm,jdbcType=INTEGER},
+      </if>
+      <if test="hkszd != null">
+        #{hkszd,jdbcType=VARCHAR},
+      </if>
+      <if test="hkxz != null">
+        #{hkxz,jdbcType=INTEGER},
+      </if>
+      <if test="byyx != null">
+        #{byyx,jdbcType=VARCHAR},
+      </if>
+      <if test="zy != null">
+        #{zy,jdbcType=VARCHAR},
+      </if>
+      <if test="xl != null">
+        #{xl,jdbcType=INTEGER},
+      </if>
+      <if test="cjgzsj != null">
+        #{cjgzsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gl != null">
+        #{gl,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="jjuser != null">
+        #{jjuser,jdbcType=VARCHAR},
+      </if>
+      <if test="jjtel != null">
+        #{jjtel,jdbcType=VARCHAR},
+      </if>
+      <if test="yhlb != null">
+        #{yhlb,jdbcType=VARCHAR},
+      </if>
+      <if test="khzh != null">
+        #{khzh,jdbcType=VARCHAR},
+      </if>
+      <if test="khyhqc != null">
+        #{khyhqc,jdbcType=VARCHAR},
+      </if>
+      <if test="zhdz != null">
+        #{zhdz,jdbcType=VARCHAR},
+      </if>
+      <if test="sbjs != null">
+        #{sbjs,jdbcType=VARCHAR},
+      </if>
+      <if test="gjjjfjs != null">
+        #{gjjjfjs,jdbcType=VARCHAR},
+      </if>
+      <if test="wxyjd != null">
+        #{wxyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="xzjzrq != null">
+        #{xzjzrq,jdbcType=DATE},
+      </if>
+      <if test="lzrq != null">
+        #{lzrq,jdbcType=DATE},
+      </if>
+      <if test="valid != null">
+        #{valid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null">
+        #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="udate != null">
+        #{udate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cdate != null">
+        #{cdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gzjl != null">
+        #{gzjl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mqzz != null">
+        #{mqzz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sbgjjjfqk != null">
+        #{sbgjjjfqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gsqk != null">
+        #{gsqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lzyy != null">
+        #{lzyy,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.crsc.domain.YyRenshiExample" resultType="java.lang.Long">
+    select count(*) from t_yy_renshi
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update t_yy_renshi
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.verson != null">
+        VERSON = #{record.verson,jdbcType=INTEGER},
+      </if>
+      <if test="record.usercode != null">
+        usercode = #{record.usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.macid != null">
+        macid = #{record.macid,jdbcType=INTEGER},
+      </if>
+      <if test="record.daterzrq != null">
+        daterzrq = #{record.daterzrq,jdbcType=DATE},
+      </if>
+      <if test="record.iszz != null">
+        iszz = #{record.iszz,jdbcType=INTEGER},
+      </if>
+      <if test="record.employer != null">
+        employer = #{record.employer,jdbcType=INTEGER},
+      </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addresswork != null">
+        addresswork = #{record.addresswork,jdbcType=INTEGER},
+      </if>
+      <if test="record.parentcode != null">
+        parentcode = #{record.parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typery != null">
+        typery = #{record.typery,jdbcType=INTEGER},
+      </if>
+      <if test="record.typepy != null">
+        typepy = #{record.typepy,jdbcType=INTEGER},
+      </if>
+      <if test="record.dategqht != null">
+        dategqht = #{record.dategqht,jdbcType=DATE},
+      </if>
+      <if test="record.syhtr != null">
+        syhtr = #{record.syhtr,jdbcType=INTEGER},
+      </if>
+      <if test="record.datezzrq != null">
+        datezzrq = #{record.datezzrq,jdbcType=DATE},
+      </if>
+      <if test="record.htqx != null">
+        htqx = #{record.htqx,jdbcType=INTEGER},
+      </if>
+      <if test="record.datecchtdqr != null">
+        datecchtdqr = #{record.datecchtdqr,jdbcType=DATE},
+      </if>
+      <if test="record.datehtzcdqr != null">
+        datehtzcdqr = #{record.datehtzcdqr,jdbcType=DATE},
+      </if>
+      <if test="record.sl != null">
+        sl = #{record.sl,jdbcType=INTEGER},
+      </if>
+      <if test="record.sfzhm != null">
+        sfzhm = #{record.sfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mz != null">
+        mz = #{record.mz,jdbcType=INTEGER},
+      </if>
+      <if test="record.csrq != null">
+        csrq = #{record.csrq,jdbcType=DATE},
+      </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.hf != null">
+        hf = #{record.hf,jdbcType=INTEGER},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.csd != null">
+        csd = #{record.csd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zzmm != null">
+        zzmm = #{record.zzmm,jdbcType=INTEGER},
+      </if>
+      <if test="record.hkszd != null">
+        hkszd = #{record.hkszd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hkxz != null">
+        hkxz = #{record.hkxz,jdbcType=INTEGER},
+      </if>
+      <if test="record.byyx != null">
+        byyx = #{record.byyx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zy != null">
+        zy = #{record.zy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xl != null">
+        xl = #{record.xl,jdbcType=INTEGER},
+      </if>
+      <if test="record.cjgzsj != null">
+        cjgzsj = #{record.cjgzsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gl != null">
+        gl = #{record.gl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null">
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jjuser != null">
+        jjuser = #{record.jjuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jjtel != null">
+        jjtel = #{record.jjtel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.yhlb != null">
+        yhlb = #{record.yhlb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khzh != null">
+        khzh = #{record.khzh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.khyhqc != null">
+        khyhqc = #{record.khyhqc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhdz != null">
+        zhdz = #{record.zhdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sbjs != null">
+        sbjs = #{record.sbjs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gjjjfjs != null">
+        gjjjfjs = #{record.gjjjfjs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wxyjd != null">
+        wxyjd = #{record.wxyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.xzjzrq != null">
+        xzjzrq = #{record.xzjzrq,jdbcType=DATE},
+      </if>
+      <if test="record.lzrq != null">
+        lzrq = #{record.lzrq,jdbcType=DATE},
+      </if>
+      <if test="record.valid != null">
+        `valid` = #{record.valid,jdbcType=INTEGER},
+      </if>
+      <if test="record.operatorid != null">
+        operatorid = #{record.operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="record.udate != null">
+        udate = #{record.udate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.cdate != null">
+        cdate = #{record.cdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gzjl != null">
+        gzjl = #{record.gzjl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.mqzz != null">
+        mqzz = #{record.mqzz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.sbgjjjfqk != null">
+        sbgjjjfqk = #{record.sbgjjjfqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.gsqk != null">
+        gsqk = #{record.gsqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.lzyy != null">
+        lzyy = #{record.lzyy,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update t_yy_renshi
+    set id = #{record.id,jdbcType=INTEGER},
+      VERSON = #{record.verson,jdbcType=INTEGER},
+      usercode = #{record.usercode,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      macid = #{record.macid,jdbcType=INTEGER},
+      daterzrq = #{record.daterzrq,jdbcType=DATE},
+      iszz = #{record.iszz,jdbcType=INTEGER},
+      employer = #{record.employer,jdbcType=INTEGER},
+      address = #{record.address,jdbcType=VARCHAR},
+      addresswork = #{record.addresswork,jdbcType=INTEGER},
+      parentcode = #{record.parentcode,jdbcType=VARCHAR},
+      typery = #{record.typery,jdbcType=INTEGER},
+      typepy = #{record.typepy,jdbcType=INTEGER},
+      dategqht = #{record.dategqht,jdbcType=DATE},
+      syhtr = #{record.syhtr,jdbcType=INTEGER},
+      datezzrq = #{record.datezzrq,jdbcType=DATE},
+      htqx = #{record.htqx,jdbcType=INTEGER},
+      datecchtdqr = #{record.datecchtdqr,jdbcType=DATE},
+      datehtzcdqr = #{record.datehtzcdqr,jdbcType=DATE},
+      sl = #{record.sl,jdbcType=INTEGER},
+      sfzhm = #{record.sfzhm,jdbcType=VARCHAR},
+      mz = #{record.mz,jdbcType=INTEGER},
+      csrq = #{record.csrq,jdbcType=DATE},
+      age = #{record.age,jdbcType=INTEGER},
+      hf = #{record.hf,jdbcType=INTEGER},
+      sex = #{record.sex,jdbcType=INTEGER},
+      csd = #{record.csd,jdbcType=VARCHAR},
+      zzmm = #{record.zzmm,jdbcType=INTEGER},
+      hkszd = #{record.hkszd,jdbcType=VARCHAR},
+      hkxz = #{record.hkxz,jdbcType=INTEGER},
+      byyx = #{record.byyx,jdbcType=VARCHAR},
+      zy = #{record.zy,jdbcType=VARCHAR},
+      xl = #{record.xl,jdbcType=INTEGER},
+      cjgzsj = #{record.cjgzsj,jdbcType=TIMESTAMP},
+      gl = #{record.gl,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      jjuser = #{record.jjuser,jdbcType=VARCHAR},
+      jjtel = #{record.jjtel,jdbcType=VARCHAR},
+      yhlb = #{record.yhlb,jdbcType=VARCHAR},
+      khzh = #{record.khzh,jdbcType=VARCHAR},
+      khyhqc = #{record.khyhqc,jdbcType=VARCHAR},
+      zhdz = #{record.zhdz,jdbcType=VARCHAR},
+      sbjs = #{record.sbjs,jdbcType=VARCHAR},
+      gjjjfjs = #{record.gjjjfjs,jdbcType=VARCHAR},
+      wxyjd = #{record.wxyjd,jdbcType=VARCHAR},
+      xzjzrq = #{record.xzjzrq,jdbcType=DATE},
+      lzrq = #{record.lzrq,jdbcType=DATE},
+      `valid` = #{record.valid,jdbcType=INTEGER},
+      operatorid = #{record.operatorid,jdbcType=INTEGER},
+      udate = #{record.udate,jdbcType=TIMESTAMP},
+      cdate = #{record.cdate,jdbcType=TIMESTAMP},
+      gzjl = #{record.gzjl,jdbcType=LONGVARCHAR},
+      mqzz = #{record.mqzz,jdbcType=LONGVARCHAR},
+      sbgjjjfqk = #{record.sbgjjjfqk,jdbcType=LONGVARCHAR},
+      gsqk = #{record.gsqk,jdbcType=LONGVARCHAR},
+      lzyy = #{record.lzyy,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update t_yy_renshi
+    set id = #{record.id,jdbcType=INTEGER},
+      VERSON = #{record.verson,jdbcType=INTEGER},
+      usercode = #{record.usercode,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      macid = #{record.macid,jdbcType=INTEGER},
+      daterzrq = #{record.daterzrq,jdbcType=DATE},
+      iszz = #{record.iszz,jdbcType=INTEGER},
+      employer = #{record.employer,jdbcType=INTEGER},
+      address = #{record.address,jdbcType=VARCHAR},
+      addresswork = #{record.addresswork,jdbcType=INTEGER},
+      parentcode = #{record.parentcode,jdbcType=VARCHAR},
+      typery = #{record.typery,jdbcType=INTEGER},
+      typepy = #{record.typepy,jdbcType=INTEGER},
+      dategqht = #{record.dategqht,jdbcType=DATE},
+      syhtr = #{record.syhtr,jdbcType=INTEGER},
+      datezzrq = #{record.datezzrq,jdbcType=DATE},
+      htqx = #{record.htqx,jdbcType=INTEGER},
+      datecchtdqr = #{record.datecchtdqr,jdbcType=DATE},
+      datehtzcdqr = #{record.datehtzcdqr,jdbcType=DATE},
+      sl = #{record.sl,jdbcType=INTEGER},
+      sfzhm = #{record.sfzhm,jdbcType=VARCHAR},
+      mz = #{record.mz,jdbcType=INTEGER},
+      csrq = #{record.csrq,jdbcType=DATE},
+      age = #{record.age,jdbcType=INTEGER},
+      hf = #{record.hf,jdbcType=INTEGER},
+      sex = #{record.sex,jdbcType=INTEGER},
+      csd = #{record.csd,jdbcType=VARCHAR},
+      zzmm = #{record.zzmm,jdbcType=INTEGER},
+      hkszd = #{record.hkszd,jdbcType=VARCHAR},
+      hkxz = #{record.hkxz,jdbcType=INTEGER},
+      byyx = #{record.byyx,jdbcType=VARCHAR},
+      zy = #{record.zy,jdbcType=VARCHAR},
+      xl = #{record.xl,jdbcType=INTEGER},
+      cjgzsj = #{record.cjgzsj,jdbcType=TIMESTAMP},
+      gl = #{record.gl,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      jjuser = #{record.jjuser,jdbcType=VARCHAR},
+      jjtel = #{record.jjtel,jdbcType=VARCHAR},
+      yhlb = #{record.yhlb,jdbcType=VARCHAR},
+      khzh = #{record.khzh,jdbcType=VARCHAR},
+      khyhqc = #{record.khyhqc,jdbcType=VARCHAR},
+      zhdz = #{record.zhdz,jdbcType=VARCHAR},
+      sbjs = #{record.sbjs,jdbcType=VARCHAR},
+      gjjjfjs = #{record.gjjjfjs,jdbcType=VARCHAR},
+      wxyjd = #{record.wxyjd,jdbcType=VARCHAR},
+      xzjzrq = #{record.xzjzrq,jdbcType=DATE},
+      lzrq = #{record.lzrq,jdbcType=DATE},
+      `valid` = #{record.valid,jdbcType=INTEGER},
+      operatorid = #{record.operatorid,jdbcType=INTEGER},
+      udate = #{record.udate,jdbcType=TIMESTAMP},
+      cdate = #{record.cdate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.crsc.domain.YyRenshi">
+    update t_yy_renshi
+    <set>
+      <if test="verson != null">
+        VERSON = #{verson,jdbcType=INTEGER},
+      </if>
+      <if test="usercode != null">
+        usercode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="macid != null">
+        macid = #{macid,jdbcType=INTEGER},
+      </if>
+      <if test="daterzrq != null">
+        daterzrq = #{daterzrq,jdbcType=DATE},
+      </if>
+      <if test="iszz != null">
+        iszz = #{iszz,jdbcType=INTEGER},
+      </if>
+      <if test="employer != null">
+        employer = #{employer,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="addresswork != null">
+        addresswork = #{addresswork,jdbcType=INTEGER},
+      </if>
+      <if test="parentcode != null">
+        parentcode = #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="typery != null">
+        typery = #{typery,jdbcType=INTEGER},
+      </if>
+      <if test="typepy != null">
+        typepy = #{typepy,jdbcType=INTEGER},
+      </if>
+      <if test="dategqht != null">
+        dategqht = #{dategqht,jdbcType=DATE},
+      </if>
+      <if test="syhtr != null">
+        syhtr = #{syhtr,jdbcType=INTEGER},
+      </if>
+      <if test="datezzrq != null">
+        datezzrq = #{datezzrq,jdbcType=DATE},
+      </if>
+      <if test="htqx != null">
+        htqx = #{htqx,jdbcType=INTEGER},
+      </if>
+      <if test="datecchtdqr != null">
+        datecchtdqr = #{datecchtdqr,jdbcType=DATE},
+      </if>
+      <if test="datehtzcdqr != null">
+        datehtzcdqr = #{datehtzcdqr,jdbcType=DATE},
+      </if>
+      <if test="sl != null">
+        sl = #{sl,jdbcType=INTEGER},
+      </if>
+      <if test="sfzhm != null">
+        sfzhm = #{sfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="mz != null">
+        mz = #{mz,jdbcType=INTEGER},
+      </if>
+      <if test="csrq != null">
+        csrq = #{csrq,jdbcType=DATE},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="hf != null">
+        hf = #{hf,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="csd != null">
+        csd = #{csd,jdbcType=VARCHAR},
+      </if>
+      <if test="zzmm != null">
+        zzmm = #{zzmm,jdbcType=INTEGER},
+      </if>
+      <if test="hkszd != null">
+        hkszd = #{hkszd,jdbcType=VARCHAR},
+      </if>
+      <if test="hkxz != null">
+        hkxz = #{hkxz,jdbcType=INTEGER},
+      </if>
+      <if test="byyx != null">
+        byyx = #{byyx,jdbcType=VARCHAR},
+      </if>
+      <if test="zy != null">
+        zy = #{zy,jdbcType=VARCHAR},
+      </if>
+      <if test="xl != null">
+        xl = #{xl,jdbcType=INTEGER},
+      </if>
+      <if test="cjgzsj != null">
+        cjgzsj = #{cjgzsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gl != null">
+        gl = #{gl,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="jjuser != null">
+        jjuser = #{jjuser,jdbcType=VARCHAR},
+      </if>
+      <if test="jjtel != null">
+        jjtel = #{jjtel,jdbcType=VARCHAR},
+      </if>
+      <if test="yhlb != null">
+        yhlb = #{yhlb,jdbcType=VARCHAR},
+      </if>
+      <if test="khzh != null">
+        khzh = #{khzh,jdbcType=VARCHAR},
+      </if>
+      <if test="khyhqc != null">
+        khyhqc = #{khyhqc,jdbcType=VARCHAR},
+      </if>
+      <if test="zhdz != null">
+        zhdz = #{zhdz,jdbcType=VARCHAR},
+      </if>
+      <if test="sbjs != null">
+        sbjs = #{sbjs,jdbcType=VARCHAR},
+      </if>
+      <if test="gjjjfjs != null">
+        gjjjfjs = #{gjjjfjs,jdbcType=VARCHAR},
+      </if>
+      <if test="wxyjd != null">
+        wxyjd = #{wxyjd,jdbcType=VARCHAR},
+      </if>
+      <if test="xzjzrq != null">
+        xzjzrq = #{xzjzrq,jdbcType=DATE},
+      </if>
+      <if test="lzrq != null">
+        lzrq = #{lzrq,jdbcType=DATE},
+      </if>
+      <if test="valid != null">
+        `valid` = #{valid,jdbcType=INTEGER},
+      </if>
+      <if test="operatorid != null">
+        operatorid = #{operatorid,jdbcType=INTEGER},
+      </if>
+      <if test="udate != null">
+        udate = #{udate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cdate != null">
+        cdate = #{cdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gzjl != null">
+        gzjl = #{gzjl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mqzz != null">
+        mqzz = #{mqzz,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="sbgjjjfqk != null">
+        sbgjjjfqk = #{sbgjjjfqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="gsqk != null">
+        gsqk = #{gsqk,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="lzyy != null">
+        lzyy = #{lzyy,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.crsc.domain.YyRenshi">
+    update t_yy_renshi
+    set VERSON = #{verson,jdbcType=INTEGER},
+      usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      macid = #{macid,jdbcType=INTEGER},
+      daterzrq = #{daterzrq,jdbcType=DATE},
+      iszz = #{iszz,jdbcType=INTEGER},
+      employer = #{employer,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      addresswork = #{addresswork,jdbcType=INTEGER},
+      parentcode = #{parentcode,jdbcType=VARCHAR},
+      typery = #{typery,jdbcType=INTEGER},
+      typepy = #{typepy,jdbcType=INTEGER},
+      dategqht = #{dategqht,jdbcType=DATE},
+      syhtr = #{syhtr,jdbcType=INTEGER},
+      datezzrq = #{datezzrq,jdbcType=DATE},
+      htqx = #{htqx,jdbcType=INTEGER},
+      datecchtdqr = #{datecchtdqr,jdbcType=DATE},
+      datehtzcdqr = #{datehtzcdqr,jdbcType=DATE},
+      sl = #{sl,jdbcType=INTEGER},
+      sfzhm = #{sfzhm,jdbcType=VARCHAR},
+      mz = #{mz,jdbcType=INTEGER},
+      csrq = #{csrq,jdbcType=DATE},
+      age = #{age,jdbcType=INTEGER},
+      hf = #{hf,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      csd = #{csd,jdbcType=VARCHAR},
+      zzmm = #{zzmm,jdbcType=INTEGER},
+      hkszd = #{hkszd,jdbcType=VARCHAR},
+      hkxz = #{hkxz,jdbcType=INTEGER},
+      byyx = #{byyx,jdbcType=VARCHAR},
+      zy = #{zy,jdbcType=VARCHAR},
+      xl = #{xl,jdbcType=INTEGER},
+      cjgzsj = #{cjgzsj,jdbcType=TIMESTAMP},
+      gl = #{gl,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      jjuser = #{jjuser,jdbcType=VARCHAR},
+      jjtel = #{jjtel,jdbcType=VARCHAR},
+      yhlb = #{yhlb,jdbcType=VARCHAR},
+      khzh = #{khzh,jdbcType=VARCHAR},
+      khyhqc = #{khyhqc,jdbcType=VARCHAR},
+      zhdz = #{zhdz,jdbcType=VARCHAR},
+      sbjs = #{sbjs,jdbcType=VARCHAR},
+      gjjjfjs = #{gjjjfjs,jdbcType=VARCHAR},
+      wxyjd = #{wxyjd,jdbcType=VARCHAR},
+      xzjzrq = #{xzjzrq,jdbcType=DATE},
+      lzrq = #{lzrq,jdbcType=DATE},
+      `valid` = #{valid,jdbcType=INTEGER},
+      operatorid = #{operatorid,jdbcType=INTEGER},
+      udate = #{udate,jdbcType=TIMESTAMP},
+      cdate = #{cdate,jdbcType=TIMESTAMP},
+      gzjl = #{gzjl,jdbcType=LONGVARCHAR},
+      mqzz = #{mqzz,jdbcType=LONGVARCHAR},
+      sbgjjjfqk = #{sbgjjjfqk,jdbcType=LONGVARCHAR},
+      gsqk = #{gsqk,jdbcType=LONGVARCHAR},
+      lzyy = #{lzyy,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.crsc.domain.YyRenshi">
+    update t_yy_renshi
+    set VERSON = #{verson,jdbcType=INTEGER},
+      usercode = #{usercode,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      macid = #{macid,jdbcType=INTEGER},
+      daterzrq = #{daterzrq,jdbcType=DATE},
+      iszz = #{iszz,jdbcType=INTEGER},
+      employer = #{employer,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      addresswork = #{addresswork,jdbcType=INTEGER},
+      parentcode = #{parentcode,jdbcType=VARCHAR},
+      typery = #{typery,jdbcType=INTEGER},
+      typepy = #{typepy,jdbcType=INTEGER},
+      dategqht = #{dategqht,jdbcType=DATE},
+      syhtr = #{syhtr,jdbcType=INTEGER},
+      datezzrq = #{datezzrq,jdbcType=DATE},
+      htqx = #{htqx,jdbcType=INTEGER},
+      datecchtdqr = #{datecchtdqr,jdbcType=DATE},
+      datehtzcdqr = #{datehtzcdqr,jdbcType=DATE},
+      sl = #{sl,jdbcType=INTEGER},
+      sfzhm = #{sfzhm,jdbcType=VARCHAR},
+      mz = #{mz,jdbcType=INTEGER},
+      csrq = #{csrq,jdbcType=DATE},
+      age = #{age,jdbcType=INTEGER},
+      hf = #{hf,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      csd = #{csd,jdbcType=VARCHAR},
+      zzmm = #{zzmm,jdbcType=INTEGER},
+      hkszd = #{hkszd,jdbcType=VARCHAR},
+      hkxz = #{hkxz,jdbcType=INTEGER},
+      byyx = #{byyx,jdbcType=VARCHAR},
+      zy = #{zy,jdbcType=VARCHAR},
+      xl = #{xl,jdbcType=INTEGER},
+      cjgzsj = #{cjgzsj,jdbcType=TIMESTAMP},
+      gl = #{gl,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      jjuser = #{jjuser,jdbcType=VARCHAR},
+      jjtel = #{jjtel,jdbcType=VARCHAR},
+      yhlb = #{yhlb,jdbcType=VARCHAR},
+      khzh = #{khzh,jdbcType=VARCHAR},
+      khyhqc = #{khyhqc,jdbcType=VARCHAR},
+      zhdz = #{zhdz,jdbcType=VARCHAR},
+      sbjs = #{sbjs,jdbcType=VARCHAR},
+      gjjjfjs = #{gjjjfjs,jdbcType=VARCHAR},
+      wxyjd = #{wxyjd,jdbcType=VARCHAR},
+      xzjzrq = #{xzjzrq,jdbcType=DATE},
+      lzrq = #{lzrq,jdbcType=DATE},
+      `valid` = #{valid,jdbcType=INTEGER},
+      operatorid = #{operatorid,jdbcType=INTEGER},
+      udate = #{udate,jdbcType=TIMESTAMP},
+      cdate = #{cdate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
